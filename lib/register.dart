@@ -14,7 +14,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
+        title: Text(""),
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
@@ -50,7 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
             child: TextField(
               obscureText: true,
               controller: passwordController,
