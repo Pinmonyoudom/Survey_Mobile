@@ -18,19 +18,19 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         padding: EdgeInsets.all(10),
         child: ListView(children: <Widget>[
           Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(10),
-              child: Text(
-                'Forgot your password?',
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 30),
-              )),
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(10),
+            child: Text(
+              'Forgot your password?',
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 30),
+            )),
           Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(10),
-              child: Text('Enter your Email here and we will send you a reset.')),
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(10),
+            child: Text('Enter your Email here and we will send you a reset.')),
           Container(
             padding: EdgeInsets.all(10),
             child: TextField(
