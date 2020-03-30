@@ -309,7 +309,7 @@ class _RegisterPageState extends State<RegisterPage> {
       'first_name' : fnameController.text,
       'last_name' : lnameController.text,
       'email' : emailController.text,
-      'role_id' : roleIdController.text,
+      'role_id' : roleIdController.text = '2',
       'password' : passwordController.text,
       'password_comfirmation' : comfirmPasswordController.text
     };
