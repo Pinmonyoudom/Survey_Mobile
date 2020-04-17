@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login/screens/login.dart';
+import 'package:login/screens/home.dart';
 import 'package:login/screens/survey_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 void main() => runApp(MyApp());
@@ -44,7 +44,7 @@ class _CheckAuthState extends State<CheckAuth> {
     if (isAuth) {
       child = Survey();
     } else {
-      child = LoginPage();
+      child = HomePage();
     }
     return Scaffold(
       body: child,

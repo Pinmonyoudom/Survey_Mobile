@@ -69,7 +69,41 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           return null;
                         },
                       ),
-                    ),    
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: FlatButton(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: 15, bottom: 15, left: 20, right: 20),
+                          child: Text('Submit',
+                            textDirection: TextDirection.ltr,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15.0,
+                              decoration: TextDecoration.none,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        color: Color(0xff01A0C7),
+                        disabledColor: Colors.grey,
+                        shape: new RoundedRectangleBorder(
+                          borderRadius:
+                          new BorderRadius.circular(32.0)),
+                        onPressed: () {
+
+                        },
+                      )   
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 30),
+                      child: Text('--Unfinished--',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ), 
+                    ),
                   ],
                 ),
               ),
