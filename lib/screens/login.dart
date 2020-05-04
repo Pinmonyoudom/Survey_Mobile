@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:login/screens/forgot_password.dart';
 import 'package:login/screens/register.dart';
 import 'package:login/screens/survey_main.dart';
+import 'navigation_drawer.dart';
 import 'package:login/utils/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -39,7 +40,8 @@ class _LoginPageState extends State<LoginPage> {
         child: Stack(
           children: <Widget>[
             Positioned(
-              child: Padding(
+              child:SingleChildScrollView(
+                child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -191,6 +193,8 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
+              )
+              
             )
           ],
         ),
@@ -214,7 +218,7 @@ class _LoginPageState extends State<LoginPage> {
       localStorage.setString('token', json.encode(body['token']));
       localStorage.setString('user', json.encode(body['user']));
       Navigator.push(context, new MaterialPageRoute(
-          builder: (context) => Survey()
+          builder: (context) => NavigationDrawer()
         ),
       );
     }else{

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login/screens/survey_main.dart';
+import 'navigation_drawer.dart';
 
 class FinishSurvey extends StatefulWidget {
   @override
@@ -51,7 +52,7 @@ class _FinishSurveyState extends State<FinishSurvey> {
                           new BorderRadius.circular(32.0)),
                         onPressed: () {
                           Navigator.push(context, new MaterialPageRoute(
-                          builder: (context) => Survey()));
+                          builder: (context) => NavigationDrawer()));
                         }
                       )   
                     ),
