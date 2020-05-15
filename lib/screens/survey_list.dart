@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login/screens/survey_form.dart';
+import 'package:login/screens/survey_page.dart';
 
 class SurveyList extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _SurveyListState extends State<SurveyList>{
               title: Text(data),
               onTap: () {
                 Navigator.push(context, new MaterialPageRoute(
-                  builder: (context) => SurveyForm()));
+                  builder: (context) => SurveyPage()));
               }
             ))
           .toList(),

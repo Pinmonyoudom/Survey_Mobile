@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'survey_list.dart';
-import 'form.dart';
+import 'survey_create_form.dart';
 import 'login.dart';
 
 class NavigationDrawer extends StatefulWidget {
@@ -10,7 +11,7 @@ class NavigationDrawer extends StatefulWidget {
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
   String mainProfilePicture =
-      "https://venngage-wordpress.s3.amazonaws.com/uploads/2016/04/survey.png";
+    "https://venngage-wordpress.s3.amazonaws.com/uploads/2016/04/survey.png";
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +26,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               UserAccountsDrawerHeader(
                 accountName:  Text("SurveySystem",style: TextStyle(color: Colors.blueAccent),),
                 accountEmail: Text("surveysystem@gmail.com",style: TextStyle(color: Colors.blueAccent),),
-              //currentAccountPicture: GestureDetector(child: CircleAvatar(backgroundImage: NetworkImage("https://flutter.dev/images/flutter-logo-sharing.png"),),),
-              //otherAccountsPictures: <Widget>[
-              //  GestureDetector(
-              //    onTap: () => print("This is other flutter"),
-              //      child: CircleAvatar(backgroundImage: NetworkImage("https://flutter.dev/images/flutter-logo-sharing.png"),),
-              //   )
-              // ],
                 decoration: BoxDecoration(
-                // Image.asset("assets/survey.png")
                   image: DecorationImage(
                     fit: BoxFit.fill,
                     image: NetworkImage(mainProfilePicture),
@@ -48,8 +41,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   },),
                 ListTile(
                   title: Text("Create Survey"),
-                  leading: Icon(Icons.create), //leading in front
-                  // trailing: Icon(Icons.create), //trailing behind
+                  leading: Icon(Icons.create),
                   onTap: () => {
                     Navigator.of(context).pop(),
                     Navigator.push(context, MaterialPageRoute(builder: (context) => FormPage()))
@@ -58,15 +50,25 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 ListTile(
                   title: Text("Logout"),
                   leading: Icon(Icons.exit_to_app),
-                  // onTap: ()=> Navigator.of(context).pop(),
                   onTap: () => {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()))
+                    logout()
                   },),
         ],
       )),
       body: Center(
         child: Text("SURVEY SYSTEM"),
       ),
+    );
+  }
+
+void logout() async{
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    localStorage.remove('user');
+    localStorage.remove('token');
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context)=>LoginPage()
+      )
     );
   }
 }

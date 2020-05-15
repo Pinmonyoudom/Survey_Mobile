@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:login/screens/form.dart';
+import 'package:login/screens/survey_create_form.dart';
 import 'package:login/screens/login.dart';
 import 'package:login/screens/survey_list.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Survey extends StatefulWidget {
   @override
@@ -99,8 +99,7 @@ class _SurveyState extends State<Survey>{
                           borderRadius:
                           new BorderRadius.circular(32.0)),
                         onPressed: () {
-                          Navigator.push(context, new MaterialPageRoute(
-                          builder: (context) => LoginPage()));
+                          logout();
                         }
                       )
                     ),
@@ -113,4 +112,15 @@ class _SurveyState extends State<Survey>{
       ),
       );
     }
+  
+  void logout() async{
+    SharedPreferences localStorage = await SharedPreferences.getInstance();
+    localStorage.remove('user');
+    localStorage.remove('token');
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context)=>LoginPage()
+      )
+    );
+  }
 }

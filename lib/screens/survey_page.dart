@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:login/screens/survey_finish.dart';
 
-class SurveyForm extends StatefulWidget {
+class SurveyPage extends StatefulWidget {
   @override
-  _SurveyFormState createState() => _SurveyFormState();
+  _SurveyPageState createState() => _SurveyPageState();
 }
 
-class _SurveyFormState extends State<SurveyForm> {
+class _SurveyPageState extends State<SurveyPage> {
   List<Animal> animals;
   Animal selectedAnimal;
   List<Fruit> fruits;
