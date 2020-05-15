@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:login/screens/survey_main.dart';
 import 'navigation_drawer.dart';
 
 class FinishSurvey extends StatefulWidget {

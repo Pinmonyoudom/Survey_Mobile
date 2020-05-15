@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:login/screens/forgot_password.dart';
 import 'package:login/screens/register.dart';
-import 'package:login/screens/survey_main.dart';
 import 'navigation_drawer.dart';
 import 'package:login/utils/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,19 +39,18 @@ class _LoginPageState extends State<LoginPage> {
         child: Stack(
           children: <Widget>[
             Positioned(
-              child:SingleChildScrollView(
-                child: Padding(
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 30),
+                      padding: const EdgeInsets.only(bottom: 25),
                       child: Text('Login',
                         style: TextStyle(
                             color: Color(0xff01A0C7),
                             fontWeight: FontWeight.bold,
-                            fontSize: 35),
+                            fontSize: 40),
                       ), 
                     ),
                     Padding(
@@ -193,8 +191,6 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              )
-              
             )
           ],
         ),

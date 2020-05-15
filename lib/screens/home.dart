@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:login/screens/login.dart';
-import 'package:login/screens/survey_list.dart';
 
 class HomePage extends StatefulWidget {
   @override
