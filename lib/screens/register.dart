@@ -49,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.only(top: 50, bottom: 20),
                     child: Text(
                       'Register',
                       style: TextStyle(
@@ -288,7 +288,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.only(top: 15, bottom: 50),
                     child: InkWell(
                       onTap: () {
                         Navigator.push(

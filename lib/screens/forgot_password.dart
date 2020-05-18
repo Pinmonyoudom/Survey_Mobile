@@ -100,6 +100,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       padding: const EdgeInsets.only(bottom: 30),
                       child: Text('--Unfinished--',
                         style: TextStyle(
+                            color: Colors.red,
                             fontWeight: FontWeight.bold,
                             fontSize: 20),
                       ), 
