@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'survey_list.dart';
 import 'survey_create_form.dart';
 import 'login.dart';
 
@@ -17,7 +16,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Survey System"),
+        title: Text("List of Survey"),
         backgroundColor: Colors.blueAccent,
       ),
       drawer: Drawer(
@@ -32,13 +31,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                     image: NetworkImage(mainProfilePicture),
                   ),
                 )),
-                ListTile(
-                  title: Text("View Existed Survey"),
-                  leading: Icon(Icons.control_point_duplicate),                
-                  onTap: () => {
-                    Navigator.of(context).pop(),
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SurveyList()))
-                  },),
                 ListTile(
                   title: Text("Create Survey"),
                   leading: Icon(Icons.create),
@@ -56,7 +48,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         ],
       )),
       body: Center(
-        child: Text("SURVEY SYSTEM"),
+        child: Text("Empty"),
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login/screens/login.dart';
+import 'navigation_drawer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage>{
                           new BorderRadius.circular(32.0)),
                         onPressed: () {
                           Navigator.push(context, new MaterialPageRoute(
-                          builder: (context) => LoginPage()));
+                          builder: (context) => NavigationDrawer()));
                         }
                       )
                     ),
