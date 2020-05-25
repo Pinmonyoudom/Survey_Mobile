@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'survey_create_form.dart';
 import 'login.dart';
 
 class NavigationDrawer extends StatefulWidget {
@@ -31,13 +30,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                     image: NetworkImage(mainProfilePicture),
                   ),
                 )),
-                ListTile(
-                  title: Text("Create Survey"),
-                  leading: Icon(Icons.create),
-                  onTap: () => {
-                    Navigator.of(context).pop(),
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => FormPage()))
-                  },),
                 Divider(),
                 ListTile(
                   title: Text("Logout"),
@@ -53,7 +45,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     );
   }
 
-void logout() async{
+  void logout() async{
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     localStorage.remove('user');
     localStorage.remove('token');
@@ -63,4 +55,5 @@ void logout() async{
       )
     );
   }
+
 }
