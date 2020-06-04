@@ -332,7 +332,7 @@ class _RegisterPageState extends State<RegisterPage> {
       'password_comfirmation': comfirmPasswordController.text
     };
 
-    var res = await Network().authData(data, '/create');
+    var res = await Network().authData(data, '/register');
     var body = json.decode(res.body);
     if (body != null) {
       SharedPreferences localStorage = await SharedPreferences.getInstance();

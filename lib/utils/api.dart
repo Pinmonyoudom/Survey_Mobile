@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Network{
-  final String _url = 'http://10.0.2.2:8000/api';
+  final String _url = 'https://survey-system-1.herokuapp.com/api';
   var token;
 
   _getToken() async {
