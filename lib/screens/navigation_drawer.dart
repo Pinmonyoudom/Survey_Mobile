@@ -1,7 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:login/utils/survey_class.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'detailScreen.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'login.dart';
 
 class NavigationDrawer extends StatefulWidget {
@@ -10,13 +10,8 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
-  String mainProfilePicture =
-    "https://venngage-wordpress.s3.amazonaws.com/uploads/2016/04/survey.png";
-  List<Todo> todos = List<Todo>.generate(20, (i) => Todo(
-      'Survey $i',
-      'A page for Survey $i',
-    ),
-  );
+  String mainProfilePicture = "https://venngage-wordpress.s3.amazonaws.com/uploads/2016/04/survey.png";
+  final Completer<WebViewController> _controller = Completer<WebViewController>();
 
   @override
   Widget build(BuildContext context) {
@@ -46,24 +41,13 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   },),
         ],
       )),
-      body: ListView.builder(
-        itemCount: todos.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(todos[index].title),
-            onTap: () {
-              Navigator.push(context,
-                MaterialPageRoute(
-                  builder: (context) => DetailScreen(),
-                  settings: RouteSettings(
-                    arguments: todos[index],
-                  ),
-                ),
-              );
-            },
-          );
+      body: WebView(
+        initialUrl: "https://survey-system-1.herokuapp.com",
+        javascriptMode: JavascriptMode.unrestricted,
+        onWebViewCreated: (WebViewController webViewController) {
+          _controller.complete(webViewController);
         },
-      ),
+      )
     );
   }
 
