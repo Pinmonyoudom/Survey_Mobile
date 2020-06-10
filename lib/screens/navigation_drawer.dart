@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:login/screens/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'login.dart';
 
 class NavigationDrawer extends StatefulWidget {
   @override
@@ -57,9 +57,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     localStorage.remove('token');
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context)=>LoginPage()
+      MaterialPageRoute(builder: (context)=>HomePage()
       )
     );
   }
-
 }
