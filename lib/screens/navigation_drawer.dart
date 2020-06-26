@@ -1,8 +1,59 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:login/screens/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:http/http.dart' as http;
+
+Future<List<Survey>> _fetchSurvey() async {
+  final surveysListAPIUrl = 'http://survey-system-1.herokuapp.com/api/survey';
+  final response = await http.get(surveysListAPIUrl,
+  headers: {HttpHeaders.authorizationHeader: 'token'},
+  );
+
+  if (response.statusCode == 200) {
+    List jsonResponse = json.decode(response.body);
+    return jsonResponse.map((survey) => new Survey.fromJson(survey)).toList();
+  } else {
+    throw Exception('Failed to load surveys from API');
+  }
+}
+
+ListView _surveyListView(data) {
+  return ListView.builder(
+    itemCount: data.length,
+    itemBuilder: (context, index) {
+      return _tile(data[index].title, Icons.arrow_right);
+    }
+  );
+}
+
+ListTile _tile(String title, IconData icon) => ListTile(
+  title: Text(title,
+      style: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 20,
+      )),
+  leading: Icon(
+    icon,
+    color: Colors.blue[500],
+  ),
+);
+
+class Survey {
+  final int id;
+  final String title;
+
+  Survey({this.id, this.title});
+
+  factory Survey.fromJson(Map<String, dynamic> json) {
+    return Survey(
+      id: json['id'],
+      title: json['title'],
+    );
+  }
+}
 
 class NavigationDrawer extends StatefulWidget {
   @override
@@ -11,7 +62,6 @@ class NavigationDrawer extends StatefulWidget {
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
   String mainProfilePicture = "https://venngage-wordpress.s3.amazonaws.com/uploads/2016/04/survey.png";
-  final Completer<WebViewController> _controller = Completer<WebViewController>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +91,20 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   },),
         ],
       )),
-      body: WebView(
-        initialUrl: "https://survey-system-1.herokuapp.com",
-        javascriptMode: JavascriptMode.unrestricted,
-        onWebViewCreated: (WebViewController webViewController) {
-          _controller.complete(webViewController);
-        },
-      )
+      body: Center(
+          child: FutureBuilder<List<Survey>>(
+          future: _fetchSurvey(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<Survey> data = snapshot.data;
+              return _surveyListView(data);
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+            return CircularProgressIndicator();
+          },
+        )
+      ),
     );
   }
 
