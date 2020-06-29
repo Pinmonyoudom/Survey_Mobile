@@ -336,7 +336,7 @@ class _RegisterPageState extends State<RegisterPage> {
     var body = json.decode(res.body);
     if (body != null) {
       SharedPreferences localStorage = await SharedPreferences.getInstance();
-      localStorage.setString('token', json.encode(body['token']));
+      localStorage.setString('acessToken', json.encode(body['acessToken']));
       localStorage.setString('user', json.encode(body['user']));
       Navigator.push(
         context,

@@ -12,7 +12,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController usernameController = new TextEditingController();
+  final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                               child: TextFormField(
                                 style: TextStyle(color: Color(0xFF000000)),
                                 cursorColor: Color(0xFF9b9b9b),
-                                controller: usernameController,
+                                controller: emailController,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
@@ -73,18 +73,18 @@ class _LoginPageState extends State<LoginPage> {
                                     Icons.insert_emoticon,
                                     color: Colors.grey,
                                   ),
-                                  hintText: "Username",
+                                  hintText: "Email",
                                   hintStyle: TextStyle(
                                       color: Color(0xFF9b9b9b),
                                       fontSize: 15,
                                       fontWeight: FontWeight.normal),
                                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))
                                 ),
-                                validator: (usernameValue) {
-                                  if (usernameValue.isEmpty) {
-                                    return 'Please enter your username';
+                                validator: (emailValue) {
+                                  if (emailValue.isEmpty) {
+                                    return 'Please enter your email';
                                   }
-                                  usernameController.text = usernameValue;
+                                  emailController.text = emailValue;
                                   return null;
                                 },
                               ),
@@ -203,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
       _isLoading = true;
     });
     var data = {
-      'username' : usernameController.text,
+      'email' : emailController.text,
       'password' : passwordController.text
     };
 
@@ -211,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
     var body = json.decode(res.body);
     if(body != null){
       SharedPreferences localStorage = await SharedPreferences.getInstance();
-      localStorage.setString('token', json.encode(body['token']));
+      localStorage.setString('acessToken', json.encode(body['acessToken']));
       localStorage.setString('user', json.encode(body['user']));
       Navigator.push(context, new MaterialPageRoute(
           builder: (context) => NavigationDrawer()
